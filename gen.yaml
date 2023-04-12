@@ -10,6 +10,6 @@ generation:
   sdkFlattening: false
   singleTagPerOp: false
 typescript:
-  version: 1.0.0
+  version: 1.0.1
   author: Jasper
   packageName: jasper-ai
