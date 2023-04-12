@@ -1,0 +1,10 @@
+configVersion: 1.0.0
+generation:
+  telemetryEnabled: false
+  sdkClassName: SDK
+  sdkFlattening: true
+  singleTagPerOp: false
+typescript:
+  version: ""
+  author: Jasper
+  packageName: jasper-ai
