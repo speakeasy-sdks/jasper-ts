@@ -1,5 +1,5 @@
 {
-  "name": "jasper-ai",
+  "name": "@speakeasy-sdks/jasper-ai",
   "version": "1.0.1",
   "author": "Jasper",
   "scripts": {

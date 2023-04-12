@@ -35,7 +35,7 @@ export type SDKProps = {
 /**
  * API for generating content
  */
-export class SDK {
+export class Jasper {
   /**
    * Commands for generating content
    */

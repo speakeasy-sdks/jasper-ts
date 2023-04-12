@@ -14,13 +14,13 @@
 ### NPM
 
 ```bash
-npm add jasper-ai
+npm add @speakeasy-sdks/jasper-ai
 ```
 
 ### Yarn
 
 ```bash
-yarn add jasper-ai
+yarn add @speakeasy-sdks/jasper-ai
 ```
 <!-- End SDK Installation -->
 
@@ -48,11 +48,11 @@ curl
 import {
   RunCommandRequestBody,
   RunCommandResponse
-} from "jasper-ai/dist/sdk/models/operations";
+} from "@speakeasy-sdks/jasper-ai/dist/sdk/models/operations";
 
 import { AxiosError } from "axios";
-import { SDK } from "jasper-ai";
-const sdk = new SDK({
+import { Jasper } from "@speakeasy-sdks/jasper-ai";
+const sdk = new Jasper({
   security: {
     apiKeyAuth: "YOUR_API_KEY_HERE",
   },
