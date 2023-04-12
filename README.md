@@ -1,4 +1,13 @@
-# jasper-ai
+<div align="center">
+    
+    <img src="https://user-images.githubusercontent.com/6267663/227311185-62d5759f-743c-488b-8b97-09eae1dac881.png" width="100">
+    <h1>Jasper Go SDK</h1>
+   <p>Developer infrastructure for internal tools</p>
+   <a href="https://developers.jasper.ai/docs"><img src="https://img.shields.io/static/v1?label=Docs&message=API Ref&color=5444e4&style=for-the-badge" /></a>
+   <a href="https://github.com/speakeasy-sdks/jasper-ts/actions"><img src="https://img.shields.io/github/actions/workflow/status/speakeasy-sdks/jasper-ts/speakeasy_sdk_generation.yml?style=for-the-badge" /></a>
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" /></a>
+  <a href="https://github.com/speakeasy-sdks/jasper-ts/releases"><img src="https://img.shields.io/github/v/release/speakeasy-sdks/jasper-ts?sort=semver&style=for-the-badge" /></a>
+</div>
 
 <!-- Start SDK Installation -->
 ## SDK Installation
@@ -15,6 +24,24 @@ npm add jasper-ai
 yarn add jasper-ai
 ```
 <!-- End SDK Installation -->
+
+## Authentication
+
+In order to use Jasper's API, you will need to authenticate every request. We rely on API tokens to authenticate API requests.
+
+Tokens are scoped to an admin's permission set and workspace.
+
+Admins can generate API tokens in their workspace via [Settings/API tokens](https://beta.jasper.ai/settings/tokens)
+
+Once your API token is generated, you will need to pass it in an 'x-api-key' Authorization header.
+
+```bash
+GET
+
+curl 
+  --location --request GET 'https://api.jasper.ai/v1/$endpoint' \
+  --header 'x-api-key: $YOUR_API_KEY' \
+ ```
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
