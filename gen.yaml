@@ -6,10 +6,10 @@ management:
   generationVersion: 2.17.9
 generation:
   telemetryEnabled: false
-  sdkClassName: SDK
-  sdkFlattening: false
+  sdkClassName: Jasper
+  sdkFlattening: true
   singleTagPerOp: false
 typescript:
-  version: 1.0.1
+  version: 1.0.0
   author: Jasper
-  packageName: jasper-ai
+  packageName: '@speakeasy-sdks/jasper-ai'
