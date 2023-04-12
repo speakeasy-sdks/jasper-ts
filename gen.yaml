@@ -5,6 +5,6 @@ generation:
   sdkFlattening: true
   singleTagPerOp: false
 typescript:
-  version: ""
+  version: 1.0.0
   author: Jasper
-  packageName: jasper-ai
+  packageName: '@speakeasy-sdks/jasper-ai'
