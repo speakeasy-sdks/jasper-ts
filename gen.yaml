@@ -7,7 +7,7 @@ management:
 generation:
   telemetryEnabled: false
   sdkClassName: Jasper
-  sdkFlattening: false
+  sdkFlattening: true
   singleTagPerOp: false
 typescript:
   version: 1.0.3
