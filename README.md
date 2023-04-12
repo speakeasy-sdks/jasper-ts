@@ -35,8 +35,6 @@ Admins can generate API tokens in their workspace via [Settings/API tokens](http
 Once your API token is generated, you will need to pass it in an 'x-api-key' Authorization header.
 
 ```bash
-GET
-
 curl 
   --location --request GET 'https://api.jasper.ai/v1/$endpoint' \
   --header 'x-api-key: $YOUR_API_KEY' \
