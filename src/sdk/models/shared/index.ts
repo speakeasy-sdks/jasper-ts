@@ -4,6 +4,7 @@
 
 export * from "./commandinputs";
 export * from "./commandoptions";
+export * from "./commandoutput";
 export * from "./security";
 export * from "./servererror";
 export * from "./template";

@@ -87,6 +87,12 @@ export class Commands {
         });
       switch (true) {
         case httpRes?.status == 200:
+          if (utils.matchContentType(contentType, `application/json`)) {
+            res.commandOutput = utils.objectToClass(
+              httpRes?.data,
+              shared.CommandOutput
+            );
+          }
           break;
         case httpRes?.status == 500:
           if (utils.matchContentType(contentType, `application/json`)) {
