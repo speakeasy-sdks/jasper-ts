@@ -18,7 +18,6 @@ jobs:
       speakeasy_version: latest
       openapi_docs: |
         - ./openapi/openapi.yaml
-      openapi_doc_auth_header: x-api-key
       languages: |-
         - typescript
       publish_typescript: true
