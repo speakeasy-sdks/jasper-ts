@@ -1,0 +1,269 @@
+openapi: 3.0.0
+info:
+  title: Jasper API
+  version: 1.0.0
+  description: API for generating content
+servers:
+  - url: https://api.jasper.ai/v1
+security:
+  - apiKeyAuth: []
+tags: 
+  - name: Commands
+    description: Commands for generating content
+  - name: Templates
+    description: Templates for generating content
+  
+x-speakeasy-name-override:
+  - operationId: get*
+    methodNameOverride: get
+  - operationId: list*
+    methodNameOverride: list
+  - operationId: run*
+    methodNameOverride: run
+
+paths:
+  /command:
+    post:
+      operationId: runCommand
+      summary: Run a command to generate an AI Output
+      tags: 
+        -  Commands
+      x-speakeasy-usage-example: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: 
+                inputs: 
+                  $ref: '#/components/schemas/CommandInputs'
+                  required: true
+                options:
+                  $ref: '#/components/schemas/CommandOptions'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CommandOutput"
+                
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServerError"
+  /templates:
+    get:
+      operationId: listTemplates
+      summary: Get a list of available templates
+      tags: 
+        -  Templates
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TemplateOutput"
+  /templates/{templateId}:
+    parameters: 
+      - name: templateId
+        in: path
+        required: true
+        description: The template ID
+        schema:
+          type: string
+        example: skl_03a2b34578094db09dd806e49f2e15d1
+        
+    get:
+      operationId: getTemplate
+      summary: Retrieve an individual default or custom template available in your workspace by ID
+      tags: 
+        -  Templates
+      responses: 
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TemplateOutput"
+  /templates/{templateId}/run:
+    parameters: 
+      - name: templateId
+        in: path
+        required: true
+        description: The template ID
+        schema:
+          type: string
+        example: skl_03a2b34578094db09dd806e49f2e15d1
+    post: 
+      operationId: runTemplate
+      summary: Run a default template or custom template by ID to generate an AI output. See our guide on Using Templates for tips on getting started.
+      tags: 
+        -  Templates
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: 
+                inputs: 
+                  $ref: '#/components/schemas/PredefinedCommandInputs'
+                  required: true
+                options:
+                  $ref: '#/components/schemas/CommandOptions'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CommandOutput"
+                
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServerError"
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+  schemas:
+    CommandInputs:
+      type: object
+      properties:
+        command:
+          type: string
+          description: The command to execute.
+          example: Write a haiku about rabbits
+        context:
+          type: string
+          description: Optional context for the command execution.
+          example: All rabbits eat kale
+    CommandOptions:
+      type: object
+      properties:
+        outputCount:
+          type: integer
+        outputLanguage:
+          type: string
+        inputLanguage:
+          type: string
+        languageFormality:
+          type: string
+      required:
+        - outputCount
+        - outputLanguage
+        - inputLanguage
+        - languageFormality
+
+    PredefinedCommandInputs:
+      type: object
+      additionalProperties:
+        type: string
+
+    CommandOutput:
+      type: object
+      properties:
+        requestId:
+          type: string
+        resource:
+          type: string
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              text:
+                type: string
+              id:
+                type: string
+
+    TemplateOutput:
+      type: object
+      properties:
+        requestId:
+          type: string
+        resource:
+          type: string
+        data:
+          $ref: "#/components/schemas/Templates"
+    
+    Templates:
+      type: array
+      items:
+        $ref: '#/components/schemas/Template'  
+
+    Template:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The template's unique identifier.
+        name:
+          type: string
+          description: The template's name.
+        description:
+          type: string
+          description: The template's description.
+        inputSchema:
+          type: array
+          items:
+            $ref: "#/components/schemas/TemplateInputs"
+            
+    TemplateInputs:
+      type: object
+      properties:
+        inputKey:
+          type: string
+          description: The key to be used in the request body's inputs when using the Run Template endpoint to complete the template generation.
+        type:
+          type: string
+          description: The expected type of the input's value.
+          enum: 
+            - "string"
+            - "boolean"
+            - "number"
+        required:
+          type: boolean
+          description: Indicates if an input is required to complete the template.
+        maxLength:
+          type: number
+          description: The maximum character count accepted for this input's value.
+        label:
+          type: string
+          description: The suggested input label.
+        placeholder:
+          type: string
+          description: An input's placeholder that acts as an example input value.
+        tooltip:
+          type: string
+          description: An input's tooltip to add additional context for the user.
+        options:
+          type: array
+          items:
+            $ref: "#/components/schemas/TemplateInputOptions"
+            
+    TemplateInputOptions:
+      type: object
+      properties:
+        label:
+          type: string
+          description: The displayed value in a select input's dropdown.
+        value:
+          type: string
+          description: The value to use in the associated input when completing the template.
+
+    ServerError:
+      description: Server Error
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Internal server error"
