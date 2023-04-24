@@ -32,6 +32,12 @@ export class RunTemplateRequest extends SpeakeasyBase {
 }
 
 export class RunTemplateResponse extends SpeakeasyBase {
+  /**
+   * OK
+   */
+  @SpeakeasyMetadata()
+  commandOutput?: shared.CommandOutput;
+
   @SpeakeasyMetadata()
   contentType: string;
 

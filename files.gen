@@ -16,6 +16,8 @@ src/internal/utils/retries.ts
 src/internal/utils/security.ts
 src/internal/utils/utils.ts
 src/sdk/index.ts
+src/sdk/types/index.ts
+src/sdk/types/rfcdate.ts
 tsconfig.json
 src/sdk/models/operations/runcommand.ts
 src/sdk/models/operations/gettemplate.ts
@@ -23,6 +25,7 @@ src/sdk/models/operations/listtemplates.ts
 src/sdk/models/operations/runtemplate.ts
 src/sdk/models/operations/index.ts
 src/sdk/models/shared/servererror.ts
+src/sdk/models/shared/commandoutput.ts
 src/sdk/models/shared/commandoptions.ts
 src/sdk/models/shared/commandinputs.ts
 src/sdk/models/shared/templateoutput.ts

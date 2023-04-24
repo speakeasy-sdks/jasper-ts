@@ -20,6 +20,12 @@ export class RunCommandRequestBody extends SpeakeasyBase {
 }
 
 export class RunCommandResponse extends SpeakeasyBase {
+  /**
+   * OK
+   */
+  @SpeakeasyMetadata()
+  commandOutput?: shared.CommandOutput;
+
   @SpeakeasyMetadata()
   contentType: string;
 
