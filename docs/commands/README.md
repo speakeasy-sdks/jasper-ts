@@ -1,4 +1,19 @@
-<!-- Start SDK Example Usage -->
+# commands
+
+## Overview
+
+Commands for generating content
+
+### Available Operations
+
+* [run](#run) - Run a command to generate an AI Output
+
+## run
+
+Run a command to generate an AI Output
+
+### Example Usage
+
 ```typescript
 import { Jasper } from "@speakeasy-sdks/jasper-ai";
 import { RunCommandRequestBody, RunCommandResponse } from "@speakeasy-sdks/jasper-ai/dist/sdk/models/operations";
@@ -16,10 +31,10 @@ const req: RunCommandRequestBody = {
     context: "All rabbits eat kale",
   },
   options: {
-    inputLanguage: "corrupti",
-    languageFormality: "provident",
-    outputCount: 715190,
-    outputLanguage: "quibusdam",
+    inputLanguage: "unde",
+    languageFormality: "nulla",
+    outputCount: 544883,
+    outputLanguage: "illum",
   },
 };
 
@@ -29,4 +44,3 @@ sdk.commands.run(req).then((res: RunCommandResponse | AxiosError) => {
   }
 });
 ```
-<!-- End SDK Example Usage -->
