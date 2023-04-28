@@ -37,7 +37,7 @@ export class Templates {
   /**
    * Retrieve an individual default or custom template available in your workspace by ID
    */
-  get(
+  async get(
     req: operations.GetTemplateRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GetTemplateResponse> {
@@ -54,83 +54,87 @@ export class Templates {
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetTemplateResponse =
-        new operations.GetTemplateResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.templateOutput = utils.objectToClass(
-              httpRes?.data,
-              shared.TemplateOutput
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.GetTemplateResponse =
+      new operations.GetTemplateResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.templateOutput = utils.objectToClass(
+            httpRes?.data,
+            shared.TemplateOutput
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
    * Get a list of available templates
    */
-  list(config?: AxiosRequestConfig): Promise<operations.ListTemplatesResponse> {
+  async list(
+    config?: AxiosRequestConfig
+  ): Promise<operations.ListTemplatesResponse> {
     const baseURL: string = this._serverURL;
     const url: string = baseURL.replace(/\/$/, "") + "/templates";
 
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.ListTemplatesResponse =
-        new operations.ListTemplatesResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.templateOutput = utils.objectToClass(
-              httpRes?.data,
-              shared.TemplateOutput
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.ListTemplatesResponse =
+      new operations.ListTemplatesResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.templateOutput = utils.objectToClass(
+            httpRes?.data,
+            shared.TemplateOutput
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
    * Run a default template or custom template by ID to generate an AI output. See our guide on Using Templates for tips on getting started.
    */
-  run(
+  async run(
     req: operations.RunTemplateRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.RunTemplateResponse> {
@@ -163,7 +167,8 @@ export class Templates {
 
     const headers = { ...reqBodyHeaders, ...config?.headers };
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "post",
       headers: headers,
@@ -171,37 +176,37 @@ export class Templates {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.RunTemplateResponse =
-        new operations.RunTemplateResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.commandOutput = utils.objectToClass(
-              httpRes?.data,
-              shared.CommandOutput
-            );
-          }
-          break;
-        case httpRes?.status == 500:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.serverError = utils.objectToClass(
-              httpRes?.data,
-              shared.ServerError
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.RunTemplateResponse =
+      new operations.RunTemplateResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.commandOutput = utils.objectToClass(
+            httpRes?.data,
+            shared.CommandOutput
+          );
+        }
+        break;
+      case httpRes?.status == 500:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.serverError = utils.objectToClass(
+            httpRes?.data,
+            shared.ServerError
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 }

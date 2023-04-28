@@ -1,8 +1,7 @@
 <!-- Start SDK Example Usage -->
 ```typescript
 import { Jasper } from "@speakeasy-sdks/jasper-ai";
-import { RunCommandRequestBody, RunCommandResponse } from "@speakeasy-sdks/jasper-ai/dist/sdk/models/operations";
-import { AxiosError } from "axios";
+import { RunCommandResponse } from "@speakeasy-sdks/jasper-ai/dist/sdk/models/operations";
 
 const sdk = new Jasper({
   security: {
@@ -10,7 +9,7 @@ const sdk = new Jasper({
   },
 });
 
-const req: RunCommandRequestBody = {
+sdk.commands.run({
   inputs: {
     command: "Write a haiku about rabbits",
     context: "All rabbits eat kale",
@@ -21,10 +20,8 @@ const req: RunCommandRequestBody = {
     outputCount: 715190,
     outputLanguage: "quibusdam",
   },
-};
-
-sdk.commands.run(req).then((res: RunCommandResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: RunCommandResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });

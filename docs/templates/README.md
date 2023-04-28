@@ -18,9 +18,8 @@ Retrieve an individual default or custom template available in your workspace by
 
 ```typescript
 import { Jasper } from "@speakeasy-sdks/jasper-ai";
-import { GetTemplateRequest, GetTemplateResponse } from "@speakeasy-sdks/jasper-ai/dist/sdk/models/operations";
+import { GetTemplateResponse } from "@speakeasy-sdks/jasper-ai/dist/sdk/models/operations";
 import { TemplateInputsTypeEnum } from "@speakeasy-sdks/jasper-ai/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Jasper({
   security: {
@@ -28,12 +27,10 @@ const sdk = new Jasper({
   },
 });
 
-const req: GetTemplateRequest = {
+sdk.templates.get({
   templateId: "vel",
-};
-
-sdk.templates.get(req).then((res: GetTemplateResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: GetTemplateResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -49,7 +46,6 @@ Get a list of available templates
 import { Jasper } from "@speakeasy-sdks/jasper-ai";
 import { ListTemplatesResponse } from "@speakeasy-sdks/jasper-ai/dist/sdk/models/operations";
 import { TemplateInputsTypeEnum } from "@speakeasy-sdks/jasper-ai/dist/sdk/models/shared";
-import { AxiosError } from "axios";
 
 const sdk = new Jasper({
   security: {
@@ -57,8 +53,8 @@ const sdk = new Jasper({
   },
 });
 
-sdk.templates.list().then((res: ListTemplatesResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+sdk.templates.list().then((res: ListTemplatesResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -72,8 +68,7 @@ Run a default template or custom template by ID to generate an AI output. See ou
 
 ```typescript
 import { Jasper } from "@speakeasy-sdks/jasper-ai";
-import { RunTemplateRequest, RunTemplateResponse } from "@speakeasy-sdks/jasper-ai/dist/sdk/models/operations";
-import { AxiosError } from "axios";
+import { RunTemplateResponse } from "@speakeasy-sdks/jasper-ai/dist/sdk/models/operations";
 
 const sdk = new Jasper({
   security: {
@@ -81,7 +76,7 @@ const sdk = new Jasper({
   },
 });
 
-const req: RunTemplateRequest = {
+sdk.templates.run({
   requestBody: {
     inputs: {
       "deserunt": "suscipit",
@@ -96,10 +91,8 @@ const req: RunTemplateRequest = {
     },
   },
   templateId: "minus",
-};
-
-sdk.templates.run(req).then((res: RunTemplateResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: RunTemplateResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
