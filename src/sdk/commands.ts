@@ -37,7 +37,7 @@ export class Commands {
   /**
    * Run a command to generate an AI Output
    */
-  run(
+  async run(
     req: operations.RunCommandRequestBody,
     config?: AxiosRequestConfig
   ): Promise<operations.RunCommandResponse> {
@@ -66,7 +66,8 @@ export class Commands {
 
     const headers = { ...reqBodyHeaders, ...config?.headers };
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "post",
       headers: headers,
@@ -74,37 +75,37 @@ export class Commands {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.RunCommandResponse =
-        new operations.RunCommandResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.commandOutput = utils.objectToClass(
-              httpRes?.data,
-              shared.CommandOutput
-            );
-          }
-          break;
-        case httpRes?.status == 500:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.serverError = utils.objectToClass(
-              httpRes?.data,
-              shared.ServerError
-            );
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.RunCommandResponse =
+      new operations.RunCommandResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.commandOutput = utils.objectToClass(
+            httpRes?.data,
+            shared.CommandOutput
+          );
+        }
+        break;
+      case httpRes?.status == 500:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.serverError = utils.objectToClass(
+            httpRes?.data,
+            shared.ServerError
+          );
+        }
+        break;
+    }
+
+    return res;
   }
 }

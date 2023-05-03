@@ -43,20 +43,16 @@ curl
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
 ```typescript
-import {
-  RunCommandRequestBody,
-  RunCommandResponse
-} from "@speakeasy-sdks/jasper-ai/dist/sdk/models/operations";
-
-import { AxiosError } from "axios";
 import { Jasper } from "@speakeasy-sdks/jasper-ai";
+import { RunCommandResponse } from "@speakeasy-sdks/jasper-ai/dist/sdk/models/operations";
+
 const sdk = new Jasper({
   security: {
     apiKeyAuth: "YOUR_API_KEY_HERE",
   },
 });
 
-const req: RunCommandRequestBody = {
+sdk.commands.run({
   inputs: {
     command: "Write a haiku about rabbits",
     context: "All rabbits eat kale",
@@ -67,10 +63,10 @@ const req: RunCommandRequestBody = {
     outputCount: 715190,
     outputLanguage: "quibusdam",
   },
-};
-
-sdk.commands.run(req).then((res: RunCommandResponse | AxiosError) => {
-   // handle response
+}).then((res: RunCommandResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
 });
 ```
 <!-- End SDK Example Usage -->
@@ -79,15 +75,15 @@ sdk.commands.run(req).then((res: RunCommandResponse | AxiosError) => {
 ## Available Resources and Operations
 
 
-### commands
+### [commands](docs/commands/README.md)
 
-* `run` - Run a command to generate an AI Output
+* [run](docs/commands/README.md#run) - Run a command to generate an AI Output
 
-### templates
+### [templates](docs/templates/README.md)
 
-* `get` - Retrieve an individual default or custom template available in your workspace by ID
-* `list` - Get a list of available templates
-* `run` - Run a default template or custom template by ID to generate an AI output. See our guide on Using Templates for tips on getting started.
+* [get](docs/templates/README.md#get) - Retrieve an individual default or custom template available in your workspace by ID
+* [list](docs/templates/README.md#list) - Get a list of available templates
+* [run](docs/templates/README.md#run) - Run a default template or custom template by ID to generate an AI output. See our guide on Using Templates for tips on getting started.
 <!-- End SDK Available Operations -->
 
 ### Maturity

@@ -34,4 +34,7 @@ src/sdk/models/shared/templateinputs.ts
 src/sdk/models/shared/templateinputoptions.ts
 src/sdk/models/shared/security.ts
 src/sdk/models/shared/index.ts
+docs/jasper/README.md
+docs/commands/README.md
+docs/templates/README.md
 USAGE.md
