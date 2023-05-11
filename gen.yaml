@@ -2,14 +2,14 @@ configVersion: 1.0.0
 management:
   docChecksum: f5b6e724b9f702f6494ec262b0dc33c5
   docVersion: 1.0.0
-  speakeasyVersion: 1.29.2
-  generationVersion: 2.26.2
+  speakeasyVersion: 1.30.0
+  generationVersion: 2.26.3
 generation:
   telemetryEnabled: false
   sdkClassName: Jasper
   singleTagPerOp: false
 typescript:
-  version: 1.6.2
+  version: 1.6.3
   author: Jasper
   maxMethodParams: 0
   packageName: '@speakeasy-sdks/jasper-ai'
