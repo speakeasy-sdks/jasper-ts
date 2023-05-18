@@ -151,3 +151,11 @@ Based on:
 - Speakeasy CLI 1.33.2 (2.29.0) https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [NPM v1.9.0] https://www.npmjs.com/package/@speakeasy-sdks/jasper-ai/v/1.9.0 - .
+
+## 2023-05-18 00:39:53
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 
+- Speakeasy CLI 1.34.0 (2.30.0) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [NPM v1.10.0] https://www.npmjs.com/package/@speakeasy-sdks/jasper-ai/v/1.10.0 - .
