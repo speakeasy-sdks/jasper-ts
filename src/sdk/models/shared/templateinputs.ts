@@ -9,7 +9,7 @@ import { Expose, Type } from "class-transformer";
 /**
  * The expected type of the input's value.
  */
-export enum TemplateInputsTypeEnum {
+export enum TemplateInputsType {
   String = "string",
   Boolean = "boolean",
   Number = "number",
@@ -68,5 +68,5 @@ export class TemplateInputs extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "type" })
-  type?: TemplateInputsTypeEnum;
+  type?: TemplateInputsType;
 }

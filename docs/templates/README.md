@@ -19,7 +19,7 @@ Retrieve an individual default or custom template available in your workspace by
 ```typescript
 import { Jasper } from "@speakeasy-sdks/jasper-ai";
 import { GetTemplateResponse } from "@speakeasy-sdks/jasper-ai/dist/sdk/models/operations";
-import { TemplateInputsTypeEnum } from "@speakeasy-sdks/jasper-ai/dist/sdk/models/shared";
+import { TemplateInputsType } from "@speakeasy-sdks/jasper-ai/dist/sdk/models/shared";
 
 const sdk = new Jasper({
   security: {
@@ -45,7 +45,7 @@ Get a list of available templates
 ```typescript
 import { Jasper } from "@speakeasy-sdks/jasper-ai";
 import { ListTemplatesResponse } from "@speakeasy-sdks/jasper-ai/dist/sdk/models/operations";
-import { TemplateInputsTypeEnum } from "@speakeasy-sdks/jasper-ai/dist/sdk/models/shared";
+import { TemplateInputsType } from "@speakeasy-sdks/jasper-ai/dist/sdk/models/shared";
 
 const sdk = new Jasper({
   security: {
