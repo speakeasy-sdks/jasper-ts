@@ -9,7 +9,7 @@ import { Expose } from "class-transformer";
  * Server Error
  */
 export class ServerError extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "error" })
-  error?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "error" })
+    error?: string;
 }

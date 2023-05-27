@@ -6,19 +6,19 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 export class CommandOptions extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "inputLanguage" })
-  inputLanguage: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "inputLanguage" })
+    inputLanguage: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "languageFormality" })
-  languageFormality: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "languageFormality" })
+    languageFormality: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "outputCount" })
-  outputCount: number;
+    @SpeakeasyMetadata()
+    @Expose({ name: "outputCount" })
+    outputCount: number;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "outputLanguage" })
-  outputLanguage: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "outputLanguage" })
+    outputLanguage: string;
 }

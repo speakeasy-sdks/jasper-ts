@@ -7,29 +7,29 @@ import { TemplateInputs } from "./templateinputs";
 import { Expose, Type } from "class-transformer";
 
 export class Template extends SpeakeasyBase {
-  /**
-   * The template's description.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "description" })
-  description?: string;
+    /**
+     * The template's description.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "description" })
+    description?: string;
 
-  /**
-   * The template's unique identifier.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id?: string;
+    /**
+     * The template's unique identifier.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id?: string;
 
-  @SpeakeasyMetadata({ elemType: TemplateInputs })
-  @Expose({ name: "inputSchema" })
-  @Type(() => TemplateInputs)
-  inputSchema?: TemplateInputs[];
+    @SpeakeasyMetadata({ elemType: TemplateInputs })
+    @Expose({ name: "inputSchema" })
+    @Type(() => TemplateInputs)
+    inputSchema?: TemplateInputs[];
 
-  /**
-   * The template's name.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "name" })
-  name?: string;
+    /**
+     * The template's name.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "name" })
+    name?: string;
 }

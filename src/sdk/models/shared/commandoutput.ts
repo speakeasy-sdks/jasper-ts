@@ -6,29 +6,29 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Type } from "class-transformer";
 
 export class CommandOutputData extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "id" })
-  id?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "text" })
-  text?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "text" })
+    text?: string;
 }
 
 /**
  * OK
  */
 export class CommandOutput extends SpeakeasyBase {
-  @SpeakeasyMetadata({ elemType: CommandOutputData })
-  @Expose({ name: "data" })
-  @Type(() => CommandOutputData)
-  data?: CommandOutputData[];
+    @SpeakeasyMetadata({ elemType: CommandOutputData })
+    @Expose({ name: "data" })
+    @Type(() => CommandOutputData)
+    data?: CommandOutputData[];
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "requestId" })
-  requestId?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "requestId" })
+    requestId?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "resource" })
-  resource?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "resource" })
+    resource?: string;
 }

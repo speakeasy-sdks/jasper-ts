@@ -8,48 +8,46 @@ import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
 export class RunTemplateRequestBody extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "inputs" })
-  inputs?: Record<string, string>;
+    @SpeakeasyMetadata()
+    @Expose({ name: "inputs" })
+    inputs?: Record<string, string>;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "options" })
-  @Type(() => shared.CommandOptions)
-  options?: shared.CommandOptions;
+    @SpeakeasyMetadata()
+    @Expose({ name: "options" })
+    @Type(() => shared.CommandOptions)
+    options?: shared.CommandOptions;
 }
 
 export class RunTemplateRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  requestBody?: RunTemplateRequestBody;
+    @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+    requestBody?: RunTemplateRequestBody;
 
-  /**
-   * The template ID
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=templateId",
-  })
-  templateId: string;
+    /**
+     * The template ID
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=templateId" })
+    templateId: string;
 }
 
 export class RunTemplateResponse extends SpeakeasyBase {
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  commandOutput?: shared.CommandOutput;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    commandOutput?: shared.CommandOutput;
 
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Server Error
-   */
-  @SpeakeasyMetadata()
-  serverError?: shared.ServerError;
+    /**
+     * Server Error
+     */
+    @SpeakeasyMetadata()
+    serverError?: shared.ServerError;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

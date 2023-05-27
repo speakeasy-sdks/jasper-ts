@@ -10,16 +10,16 @@ import { Expose, Type } from "class-transformer";
  * OK
  */
 export class TemplateOutput extends SpeakeasyBase {
-  @SpeakeasyMetadata({ elemType: Template })
-  @Expose({ name: "data" })
-  @Type(() => Template)
-  data?: Template[];
+    @SpeakeasyMetadata({ elemType: Template })
+    @Expose({ name: "data" })
+    @Type(() => Template)
+    data?: Template[];
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "requestId" })
-  requestId?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "requestId" })
+    requestId?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "resource" })
-  resource?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "resource" })
+    resource?: string;
 }

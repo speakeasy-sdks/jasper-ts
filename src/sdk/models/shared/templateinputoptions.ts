@@ -6,17 +6,17 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 export class TemplateInputOptions extends SpeakeasyBase {
-  /**
-   * The displayed value in a select input's dropdown.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "label" })
-  label?: string;
+    /**
+     * The displayed value in a select input's dropdown.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "label" })
+    label?: string;
 
-  /**
-   * The value to use in the associated input when completing the template.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "value" })
-  value?: string;
+    /**
+     * The value to use in the associated input when completing the template.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "value" })
+    value?: string;
 }

@@ -7,28 +7,26 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetTemplateRequest extends SpeakeasyBase {
-  /**
-   * The template ID
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=templateId",
-  })
-  templateId: string;
+    /**
+     * The template ID
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=templateId" })
+    templateId: string;
 }
 
 export class GetTemplateResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  templateOutput?: shared.TemplateOutput;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    templateOutput?: shared.TemplateOutput;
 }
