@@ -2,7 +2,7 @@
 
 ## Overview
 
-API for generating content
+Jasper API: API for generating content
 
 ### Available Operations
 
