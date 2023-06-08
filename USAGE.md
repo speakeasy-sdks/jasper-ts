@@ -5,7 +5,7 @@ import { RunCommandResponse } from "@speakeasy-sdks/jasper-ai/dist/sdk/models/op
 
 const sdk = new Jasper({
   security: {
-    apiKeyAuth: "YOUR_API_KEY_HERE",
+    apiKeyAuth: "",
   },
 });
 

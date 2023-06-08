@@ -23,7 +23,7 @@ import { TemplateInputsType } from "@speakeasy-sdks/jasper-ai/dist/sdk/models/sh
 
 const sdk = new Jasper({
   security: {
-    apiKeyAuth: "YOUR_API_KEY_HERE",
+    apiKeyAuth: "",
   },
 });
 
@@ -49,7 +49,7 @@ import { TemplateInputsType } from "@speakeasy-sdks/jasper-ai/dist/sdk/models/sh
 
 const sdk = new Jasper({
   security: {
-    apiKeyAuth: "YOUR_API_KEY_HERE",
+    apiKeyAuth: "",
   },
 });
 
@@ -72,7 +72,7 @@ import { RunTemplateResponse } from "@speakeasy-sdks/jasper-ai/dist/sdk/models/o
 
 const sdk = new Jasper({
   security: {
-    apiKeyAuth: "YOUR_API_KEY_HERE",
+    apiKeyAuth: "",
   },
 });
 
