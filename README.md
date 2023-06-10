@@ -75,15 +75,15 @@ sdk.commands.run({
 ## Available Resources and Operations
 
 
-### [commands](docs/commands/README.md)
+### [commands](docs/sdks/commands/README.md)
 
-* [run](docs/commands/README.md#run) - Run a command to generate an AI Output
+* [run](docs/sdks/commands/README.md#run) - Run a command to generate an AI Output
 
-### [templates](docs/templates/README.md)
+### [templates](docs/sdks/templates/README.md)
 
-* [get](docs/templates/README.md#get) - Retrieve an individual default or custom template available in your workspace by ID
-* [list](docs/templates/README.md#list) - Get a list of available templates
-* [run](docs/templates/README.md#run) - Run a default template or custom template by ID to generate an AI output. See our guide on Using Templates for tips on getting started.
+* [get](docs/sdks/templates/README.md#get) - Retrieve an individual default or custom template available in your workspace by ID
+* [list](docs/sdks/templates/README.md#list) - Get a list of available templates
+* [run](docs/sdks/templates/README.md#run) - Run a default template or custom template by ID to generate an AI output. See our guide on Using Templates for tips on getting started.
 <!-- End SDK Available Operations -->
 
 ### Maturity
